@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRIME - Promoting Resilience Innovation for Microenterprise Empowerment · Heuristic Evaluation</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- decorative dotted trail across the top -->
+<div class="skyline" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand">
+      <div>
+        <p class="eyebrow">Nielsen Heuristic Evaluation</p>
+        <h1>PRIME</h1>
+        <p class="full-name">Promoting Resilience Innovation for Microenterprise Empowerment</p>
+      </div>
+    </div>
+    <p class="hero-sub">Follow the trail below to evaluate PRIME's mobile app and web app — one stop at a time.</p>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ TRY IT FIRST ============ -->
+  <section class="card try-first" id="try-first">
+    <div class="card-head">
+      <span class="pin">📍</span>
+      <div>
+        <h2>Before you begin</h2>
+        <p class="muted">Open both experiences on your phone or browser and click through the tasks in the README before filling out the evaluation.</p>
+      </div>
+    </div>
+
+    <div class="prototypes">
+      <article class="prototype-card">
+        <div class="proto-label">📱 Mobile App</div>
+        <div class="qr-box">
+          <img id="qr-mobile" alt="QR code linking to the PRIME mobile app file" width="150" height="150">
+        </div>
+        <a class="btn btn-outline" id="link-mobile" href="#" target="_blank" rel="noopener">Open mobile app ↗</a>
+      </article>
+
+      <article class="prototype-card">
+        <div class="proto-label">💻 Web App</div>
+        <div class="qr-box">
+          <img id="qr-web" alt="QR code linking to the PRIME web app" width="150" height="150">
+        </div>
+        <a class="btn btn-outline" id="link-web" href="#" target="_blank" rel="noopener">Open web app ↗</a>
+      </article>
+    </div>
+  </section>
+
+  <form id="evalForm">
+
+    <!-- progress trail -->
+    <nav class="trail" aria-label="Form sections">
+      <a href="#part1"><span>1</span>Evaluator</a>
+      <a href="#part2"><span>2</span>Project</a>
+      <a href="#part3"><span>3</span>Violations</a>
+      <a href="#part4"><span>4</span>Summary</a>
+    </nav>
+
+    <!-- ============ PART I ============ -->
+    <section class="card" id="part1">
+      <div class="card-head">
+        <span class="pin">🧑‍💻</span>
+        <div>
+          <h2>Part I · Evaluator</h2>
+          <p class="muted">Tell us who's filing this report.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <label class="field">
+          <span>Full name</span>
+          <input type="text" id="evaluatorName" placeholder="e.g. Juana Dela Cruz" required>
+        </label>
+        <label class="field">
+          <span>Date evaluated</span>
+          <input type="date" id="evaluatorDate">
+        </label>
+      </div>
+    </section>
+
+    <!-- ============ PART II ============ -->
+    <section class="card" id="part2">
+      <div class="card-head">
+        <span class="pin">🗺️</span>
+        <div>
+          <h2>Part II · Project Description</h2>
+          <p class="muted">Summarize PRIME in a few sentences.</p>
+        </div>
+      </div>
+
+      <label class="field">
+        <span>What is PRIME?</span>
+        <textarea id="projectDescription" rows="3" placeholder="PRIME is a ... app that helps ... by providing ..."></textarea>
+      </label>
+    </section>
+
+    <!-- ============ PART III ============ -->
+    <section class="card" id="part3">
+      <div class="card-head">
+        <span class="pin">🔍</span>
+        <div>
+          <h2>Part III · List of Violations</h2>
+          <p class="muted">Add one card per issue found. Attach a screenshot to show exactly where it happened.</p>
+        </div>
+      </div>
+
+      <div id="issuesList"></div>
+
+      <button type="button" class="btn btn-primary" id="addIssueBtn">+ Add violation</button>
+    </section>
+
+    <!-- ============ PART IV ============ -->
+    <section class="card" id="part4">
+      <div class="card-head">
+        <span class="pin">🏁</span>
+        <div>
+          <h2>Part IV · Summary &amp; Recommendations</h2>
+          <p class="muted">This table fills itself in as you add violations above.</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="summaryTable">
+          <thead>
+            <tr>
+              <th>Heuristic</th>
+              <th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Total severity</th>
+            </tr>
+          </thead>
+          <tbody><!-- filled by JS --></tbody>
+        </table>
+      </div>
+
+      <label class="field" style="margin-top:20px">
+        <span>Overall summary &amp; joint recommendations</span>
+        <textarea id="overallSummary" rows="6" placeholder="Overall, PRIME presents... The most critical issues center on..."></textarea>
+      </label>
+    </section>
+
+    <!-- ============ ACTIONS ============ -->
+    <section class="card actions-card">
+      <div class="card-head">
+        <span class="pin">💾</span>
+        <div>
+          <h2>Save &amp; Export</h2>
+          <p class="muted">Your progress is auto-saved to this browser. When you submit, a PDF of this form is generated and saved.</p>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn btn-outline" id="exportJsonBtn">⬇️ Export JSON</button>
+        <button type="button" class="btn btn-outline" id="printBtn">🖨️ Save as PDF</button>
+        <button type="button" class="btn btn-outline" id="clearBtn">🗑️ Clear form</button>
+        <button type="button" class="btn btn-primary" id="cloudSaveBtn">☁️ Submit PDF to database</button>
+      </div>
+      <p class="hint" id="cloudStatus"></p>
+    </section>
+
+  </form>
+</main>
+
+<footer>
+  <p>Made for the PRIME heuristic evaluation · Nielsen's 10 Usability Heuristics</p>
+</footer>
+
+<!-- issue card template -->
+<template id="issueTemplate">
+  <article class="issue-card">
+    <div class="issue-head">
+      <span class="issue-number"></span>
+      <button type="button" class="btn-remove" title="Remove this violation">✕</button>
+    </div>
+
+    <label class="field">
+      <span>Heuristic</span>
+      <select class="issue-heuristic">
+        <option value="H1">H1 – Visibility of system status</option>
+        <option value="H2">H2 – Match between system and the real world</option>
+        <option value="H3">H3 – User control and freedom</option>
+        <option value="H4">H4 – Consistency and standards</option>
+        <option value="H5">H5 – Error prevention</option>
+        <option value="H6">H6 – Recognition rather than recall</option>
+        <option value="H7">H7 – Flexibility and efficiency of use</option>
+        <option value="H8">H8 – Aesthetic and minimalist design</option>
+        <option value="H9">H9 – Help users recognize, diagnose, and recover from errors</option>
+        <option value="H10">H10 – Help and documentation</option>
+        <option value="HN">HN – Non-heuristic issue</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span>Where (task, screen, step)</span>
+      <input type="text" class="issue-where" placeholder="e.g. Task 2, AI chat panel, after sending a message">
+    </label>
+
+    <label class="field">
+      <span>Screenshot(s)</span>
+      <input type="file" class="issue-file" accept="image/*" multiple>
+      <div class="thumbs"></div>
+    </label>
+
+    <label class="field">
+      <span>What — describe the problem</span>
+      <textarea class="issue-what" rows="2"></textarea>
+    </label>
+
+    <label class="field">
+      <span>Why — which heuristic principle is broken, and why it matters</span>
+      <textarea class="issue-why" rows="2"></textarea>
+    </label>
+
+    <div class="grid-2">
+      <label class="field">
+        <span>Severity</span>
+        <select class="issue-severity">
+          <option value="0">0 – Not a problem</option>
+          <option value="1" selected>1 – Cosmetic</option>
+          <option value="2">2 – Minor</option>
+          <option value="3">3 – Major</option>
+          <option value="4">4 – Catastrophe</option>
+        </select>
+      </label>
+    </div>
+
+    <label class="field">
+      <span>Proposed / suggested solution</span>
+      <textarea class="issue-solution" rows="2"></textarea>
+    </label>
+  </article>
+</template>
+
+<!-- Firebase + PDF generation (optional — see README.md to enable database saving) -->
+<!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script src="firebase-config.js"></script>
+-->
+
+<script src="script.js"></script>
+</body>
+</html>
