@@ -75,8 +75,16 @@ async function _uploadPdfToDrive(pdfBlob, filename) {
   };
 
   const form = new FormData();
-  form.append("metadata", new Blob([JSON.stringify(metadata)], { type: "application/json" }));
-  form.append("file", pdfBlob);
+  form.append(
+    "metadata",
+    new Blob(
+        [JSON.stringify(metadata)],
+        {
+            type: "application/json; charset=UTF-8"
+        }
+    )
+);
+  form.append("file", pdfBlob, filename);
 
   const res = await fetch(
     "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,webViewLink",
